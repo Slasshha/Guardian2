@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="newsViewer">
+
+<head>
+  <script data-require="angular.js@2.0.0" data-semver="1.5.5" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <link href="style.css" rel="stylesheet" />
+  <script src="script.js"></script>
+</head>
+
+<body ng-controller="MainController">
+  <h1>The Guardian News</h1>
+  <button>Refresh</button>
+  <div class="list-container">
+    <ul class="news-list">
+      <li ng-repeat="item in newsList" class="news-item" > <a href={{item.webUrl}} target="_blank"> {{item.webTitle}} </a> </li>
+    </ul>
+  </div>
+  <div class="navbar">
+    <button class="previous">Previous</button>
+    <input class="page-num" value= {{currentPage}} ng-keypress="updateNewsList()"  ng-model="currentPage" /> 
+    <span class="pages"> of {{ numPages | number }} pages </span>
+    <button class="next">Next</button>
+  </div>
+</body>
+
+</html>
