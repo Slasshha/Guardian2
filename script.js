@@ -33,12 +33,26 @@
     getNews(1);
     
     
-    $scope.updateNewsList = function(keyEvent) {
-  if (keyEvent.which === 13)
-   getNews($scope.currentPage);
-}
+    $scope.updateNewsList = function(Event) {
+    if (Event.which === 13)
+    getNews($scope.currentPage);
+    };
 
 
+    $scope.updateNewsPrevious = function() {
+      $scope.currentPage = $scope.currentPage-1;
+      getNews($scope.currentPage);
+
+    };
+
+    $scope.updateNewsNext = function() {
+      $scope.currentPage = $scope.currentPage+1;
+      getNews($scope.currentPage);
+
+    };
+
+
+   
     
 
   };

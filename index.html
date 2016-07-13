@@ -16,10 +16,10 @@
     </ul>
   </div>
   <div class="navbar">
-    <button class="previous">Previous</button>
-    <input class="page-num" value= {{currentPage}} ng-keypress="updateNewsList()"  ng-model="currentPage" /> 
+    <button class="previous" ng-click="updateNewsPrevious()">Previous</button>
+    <input class="page-num" value= {{currentPage}} ng-keypress="updateNewsList($event)"  ng-model="currentPage" /> 
     <span class="pages"> of {{ numPages | number }} pages </span>
-    <button class="next">Next</button>
+    <button class="next" ng-click="updateNewsNext()">Next</button>
   </div>
 </body>
 
