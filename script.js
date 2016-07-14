@@ -31,6 +31,7 @@
     };
 
     getNews(1);
+     getNews(1);
     
     
     $scope.updateNewsList = function(Event) {
