@@ -8,8 +8,8 @@
 </head>
 
 <body ng-controller="MainController">
-  <h1>The Guardian News</h1>
-  <button>Refresh</button>
+  <h1 class="title">The Guardian News</h1>
+  <button class="refresh">Refresh</button>
   <div class="list-container">
     <ul class="news-list">
       <li ng-repeat="item in newsList" class="news-item" > <a href={{item.webUrl}} target="_blank"> {{item.webTitle}} </a> </li>
@@ -20,6 +20,9 @@
     <input class="page-num" value= {{currentPage}} ng-keypress="updateNewsList($event)"  ng-model="currentPage" /> 
     <span class="pages"> of {{ numPages | number }} pages </span>
     <button class="next" ng-click="updateNewsNext()">Next</button>
+  </div>
+  <div class="error-container">
+     <span class="error"> {{ error }} </span>
   </div>
 </body>
 

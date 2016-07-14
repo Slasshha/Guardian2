@@ -1,2 +1,45 @@
-/* Styles go here */
+.refresh {
+  margin:auto;
+  display:block;
+}
 
+.title {
+	text-align: center;
+	color: #900C3F;
+}
+
+.navbar {
+	text-align: center;
+	color: #900C3F;
+}
+
+.error {
+	text-align: center;
+	color: red;
+
+}
+
+.error-container {
+	text-align: center;
+	padding-top: 20px;
+}
+
+.news-item {
+	list-style-type: none;
+	padding-left: 180px;
+	padding-right: 100px;
+	padding-top: 10px;
+	
+}
+
+ .news-item a {
+	color: #900C3F;
+	text-decoration: none;
+}
+
+.refresh, .next, .previous {
+	color: #900C3F;
+	 background-color: #FDEDEC;
+	 border-color: #FDEDEC;
+	 border-radius: 5px;
+}
