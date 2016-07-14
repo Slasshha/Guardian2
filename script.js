@@ -11,6 +11,7 @@
             $scope.numPages = response.data.response.pages;
             $scope.currentPage = response.data.response.currentPage;
             $scope.newsList = response.data.response.results;
+            $scope.error = "";
 
             console.log($scope.newsList.length);
 
@@ -33,11 +34,16 @@
         getNews(1);
 
 
+
+
         $scope.updateNewsList = function(Event) {
 
-            if ( ! angular.isNumber($scope.currentPage) ) {
+            $scope.currentPageInt = parseInt($scope.currentPage);
+
+            if (  ! Number.isInteger($scope.currentPageInt) ) {
                 $scope.error = $scope.currentPage + " is not a valid page number.";
-                console.log(angular.isNumber($scope.currentPage) );
+                console.log( Number.isInteger($scope.currentPageInt) );
+                console.log($scope.currentPageInt);
             } else
             if ($scope.currentPage < 1 || $scope.currentPage > $scope.numPages) {
                 $scope.error = "Page number should be within the range 1-" + $scope.numPages;
