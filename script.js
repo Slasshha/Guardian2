@@ -3,7 +3,7 @@
     var app = angular.module("newsViewer", []);
 
 
-    var MainController = function($scope, $http) {
+    var MainController = function($scope, $http, loadNews) {
 
         var newsDownloaded = function(response) {
             $scope.myData = response;
@@ -23,7 +23,7 @@
 
 
 
-        var getNews = function(reqPage) {
+        /* var getNews = function(reqPage) {
 
             $http.get("https://content.guardianapis.com/search?api-key=test&page=" + reqPage)
                 .then(newsDownloaded, onError);
@@ -31,7 +31,7 @@
 
         };
 
-        getNews(1);
+        getNews(1); */
 
 
 
@@ -68,14 +68,19 @@
         };
 
 
-
+    loadNews.getTopNews(1, newsDownloaded, onError);    
 
     };
 
+   
 
+    
+    app.controller("MainController", ["$scope", "$http", "loadNews", MainController]);
 
-    app.controller("MainController", ["$scope", "$http", MainController]);
-
-
+    
 
 }());
+
+
+
+
