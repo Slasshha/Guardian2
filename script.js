@@ -49,7 +49,7 @@
                 $scope.error = "Page number should be within the range 1-" + $scope.numPages;
             } else if (Event.which === 13) {
                 $scope.error = "";
-                getNews($scope.currentPage);
+                loadNews.getTopNews($scope.currentPage);
             }
 
         };
@@ -57,13 +57,13 @@
 
         $scope.updateNewsPrevious = function() {
             $scope.currentPage = $scope.currentPage - 1;
-            getNews($scope.currentPage);
+            loadNews.getTopNews($scope.currentPage);
 
         };
 
         $scope.updateNewsNext = function() {
             $scope.currentPage = $scope.currentPage + 1;
-            getNews($scope.currentPage);
+            loadNews.getTopNews($scope.currentPage);
 
         };
 
