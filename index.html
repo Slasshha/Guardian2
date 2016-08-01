@@ -5,6 +5,7 @@
   <script data-require="angular.js@2.0.0" data-semver="1.5.5" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <link href="style.css" rel="stylesheet" />
   <script src="script.js"></script>
+  <script src="newsList.js"></script>
   <script src="loadNews.js"></script>
 </head>
 
@@ -12,9 +13,9 @@
   <h1 class="title">The Guardian News</h1>
   <button class="refresh">Refresh</button>
   <div class="list-container">
-    <ul class="news-list">
-      <li ng-repeat="item in newsList" class="news-item" > <a href={{item.webUrl}} target="_blank"> {{item.webTitle}} </a> </li>
-    </ul>
+
+    <news-list news="newsList"/>
+
   </div>
   <div class="navbar">
     <button class="previous" ng-click="updateNewsPrevious()">Previous</button>

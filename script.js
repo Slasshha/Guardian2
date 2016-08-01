@@ -57,13 +57,13 @@
 
         $scope.updateNewsPrevious = function() {
             $scope.currentPage = $scope.currentPage - 1;
-            loadNews.getTopNews($scope.currentPage);
+            loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
 
         };
 
         $scope.updateNewsNext = function() {
             $scope.currentPage = $scope.currentPage + 1;
-            loadNews.getTopNews($scope.currentPage);
+            loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
 
         };
 
