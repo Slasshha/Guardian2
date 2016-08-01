@@ -18,10 +18,12 @@
 
   </div>
   <div class="navbar">
+  <form name="myForm">
     <button class="previous" ng-click="updateNewsPrevious()">Previous</button>
-    <input class="page-num" value= {{currentPage}} ng-keypress="updateNewsList($event)"  ng-model="currentPage" /> 
+    <input type="number" name="input" min="0" max="99" class="page-num"  ng-blur="updateNewsList($event)"  ng-model="currentPage" /> 
     <span class="pages"> of {{ numPages | number }} pages </span>
     <button class="next" ng-click="updateNewsNext()">Next</button>
+	</form>
   </div>
   <div class="error-container">
      <span class="error"> {{ error }} </span>

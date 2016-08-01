@@ -47,9 +47,10 @@
             } else
             if ($scope.currentPage < 1 || $scope.currentPage > $scope.numPages) {
                 $scope.error = "Page number should be within the range 1-" + $scope.numPages;
-            } else if (Event.which === 13) {
+            } else  {
                 $scope.error = "";
-                loadNews.getTopNews($scope.currentPage);
+                loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
+				
             }
 
         };
