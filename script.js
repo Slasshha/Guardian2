@@ -20,20 +20,7 @@
         var onError = function(reason) {
             $scope.error = "Sorry, we couldn't find news for you. Please try again later."
         };
-
-
-
-        /* var getNews = function(reqPage) {
-
-            $http.get("https://content.guardianapis.com/search?api-key=test&page=" + reqPage)
-                .then(newsDownloaded, onError);
-
-
-        };
-
-        getNews(1); */
-
-
+        
 
 
         $scope.updateNewsList = function(Event) {
@@ -65,6 +52,12 @@
         $scope.updateNewsNext = function() {
             $scope.currentPage = $scope.currentPage + 1;
             loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
+
+        };
+
+         $scope.refresh = function() {
+            
+            loadNews.getTopNews(1, newsDownloaded, onError);
 
         };
 

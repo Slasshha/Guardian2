@@ -11,7 +11,7 @@
 
 <body ng-controller="MainController">
   <h1 class="title">The Guardian News</h1>
-  <button class="refresh">Refresh</button>
+  <button class="refresh" ng-click="refresh()">Refresh</button>
   <div class="list-container">
 
     <news-list news="newsList"/>
@@ -20,7 +20,7 @@
   <div class="navbar">
   <form name="myForm">
     <button class="previous" ng-click="updateNewsPrevious()">Previous</button>
-    <input type="number" name="input" min="0" max="99" class="page-num"  ng-blur="updateNewsList($event)"  ng-model="currentPage" /> 
+    <input type="number" name="input" min="0" max= {{numPages}} class="page-num"  ng-blur="updateNewsList($event)"  ng-model="currentPage" /> 
     <span class="pages"> of {{ numPages | number }} pages </span>
     <button class="next" ng-click="updateNewsNext()">Next</button>
 	</form>
