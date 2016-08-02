@@ -6,7 +6,7 @@
   <link href="style.css" rel="stylesheet" />
   <script src="script.js"></script>
   <script src="newsList.js"></script>
-  <script src="loadNews.js"></script>
+  <script src="loadNewsService.js"></script>
 </head>
 
 <body ng-controller="MainController">
@@ -18,11 +18,11 @@
 
   </div>
   <div class="navbar">
-  <form name="myForm">
-    <button class="previous" ng-click="updateNewsPrevious()">Previous</button>
-    <input type="number" name="input" min="0" max= {{numPages}} class="page-num"  ng-blur="updateNewsList($event)"  ng-model="currentPage" /> 
+  <form name="myForm" ng-submit="updateNewsList()">
+    <button type="button" class="previous" ng-click="updateNewsPrevious()">Previous</button>
+    <input type="number" name="input" min="0" max= {{numPages}} class="page-num"  ng-blur="updateNewsList()"  ng-model="currentPage" /> 
     <span class="pages"> of {{ numPages | number }} pages </span>
-    <button class="next" ng-click="updateNewsNext()">Next</button>
+    <button type="button" class="next" ng-click="updateNewsNext()">Next</button>
 	</form>
   </div>
   <div class="error-container">

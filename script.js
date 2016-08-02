@@ -2,77 +2,62 @@
 (function() {
     var app = angular.module("newsViewer", []);
 
+    var MainController = function($scope, $http, loadNewsService) {
+        $scope.currentPage = 1;
+        $scope.error = "";
+        $scope.numPages = null;
+        $scope.currentPage = null;
+        $scope.newsList = null;
+         
+        var loadNewsList = function() {
+            loadNewsService
+                .getTopNews($scope.currentPage)
+                .then(newsDownloaded, onError);
+        };
 
-    var MainController = function($scope, $http, loadNews) {
-
-        var newsDownloaded = function(response) {
-            $scope.myData = response;
-            console.log(response);
-            $scope.numPages = response.data.response.pages;
-            $scope.currentPage = response.data.response.currentPage;
-            $scope.newsList = response.data.response.results;
+        var newsDownloaded = function(data) {
+            $scope.numPages = data.response.pages;
+            $scope.currentPage = data.response.currentPage;
+            $scope.newsList = data.response.results;
             $scope.error = "";
-
-            console.log($scope.newsList.length);
-
         };
 
         var onError = function(reason) {
             $scope.error = "Sorry, we couldn't find news for you. Please try again later."
         };
         
-
-
-        $scope.updateNewsList = function(Event) {
-
+        $scope.updateNewsList = function() {
             $scope.currentPageInt = parseInt($scope.currentPage);
 
-            if (  ! Number.isInteger($scope.currentPageInt) ) {
+            if (!Number.isInteger($scope.currentPageInt)) {
                 $scope.error = $scope.currentPage + " is not a valid page number.";
-                console.log( Number.isInteger($scope.currentPageInt) );
-                console.log($scope.currentPageInt);
-            } else
-            if ($scope.currentPage < 1 || $scope.currentPage > $scope.numPages) {
+            } else if ($scope.currentPage < 1 || $scope.currentPage > $scope.numPages) {
                 $scope.error = "Page number should be within the range 1-" + $scope.numPages;
             } else  {
                 $scope.error = "";
-                loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
-				
+                loadNewsList();
             }
-
         };
 
-
         $scope.updateNewsPrevious = function() {
-            $scope.currentPage = $scope.currentPage - 1;
-            loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
-
+            $scope.currentPage -= 1;
+            loadNewsList();
         };
 
         $scope.updateNewsNext = function() {
-            $scope.currentPage = $scope.currentPage + 1;
-            loadNews.getTopNews($scope.currentPage, newsDownloaded, onError);
-
+            $scope.currentPage += 1;
+            loadNewsList();
         };
 
-         $scope.refresh = function() {
-            
-            loadNews.getTopNews(1, newsDownloaded, onError);
-
+        $scope.refresh = function() {
+            $scope.currentPage = 1;
+            loadNewsList();
         };
 
-
-    loadNews.getTopNews(1, newsDownloaded, onError);    
-
+        loadNewsList();    
     };
-
-   
-
     
-    app.controller("MainController", ["$scope", "$http", "loadNews", MainController]);
-
-    
-
+    app.controller("MainController", ["$scope", "$http", "loadNewsService", MainController]);
 }());
 
 
